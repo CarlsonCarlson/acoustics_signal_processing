@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def main(name):
+def main():
     x1 = np.arange(0, 2 * (np.pi), 0.1)
     y1 = np.sin(x1)
 
@@ -17,4 +17,4 @@ def main(name):
 
 
 if __name__ == '__main__':
-    main('PyCharm')
+    main()
