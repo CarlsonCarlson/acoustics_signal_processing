@@ -78,6 +78,7 @@ def main():
     # TODO: what is the difference between single frequency vs broadband signals
 
     # TODO: learn about fourier transforms
+    # https://www.youtube.com/watch?v=spUNpyF58BY
 
     # TODO: make fast fourier transform of my 3 signals, not spectrogram
 
