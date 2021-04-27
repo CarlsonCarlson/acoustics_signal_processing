@@ -112,6 +112,10 @@ def main():
 
     # Convolution or match filter
     # replica correlation
+    # multiplying the sound by itself
+
+    # TODO: make the fourier transform run in real time
+    # TODO: Take in real time sound and output real time graph
 
 
 if __name__ == '__main__':
