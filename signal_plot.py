@@ -124,7 +124,7 @@ def main():
     # The longer the tube (saxophone) the higher the resonance frequency
     # Every object has multiple resonance frequencies called modes
     # 3 standing waves mean its at the mode 3 frequency
-    # Helmholtz resonator
+    # Helmholtz resonator whirrs when you blow into the opening from a certain angle
 
 
 if __name__ == '__main__':
