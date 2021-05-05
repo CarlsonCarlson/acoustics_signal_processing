@@ -4,6 +4,10 @@ from scipy.io import wavfile
 import wave
 from scipy.fft import fft, fftfreq
 
+# To convert the file from m4a to wav I use the audioconverter package
+# Sample command line
+# audioconvert convert input_dir/ output_dir/ --output-format .mp3
+
 
 def get_info(filename: str) -> dict:
     sound = wave.open(filename, "r")
@@ -11,7 +15,7 @@ def get_info(filename: str) -> dict:
     # print("sample width in bytes:")
     # print(sound.getsampwidth())
     # Duration in seconds
-    duration = sound.getnframes() / sound.getsampwidth()
+    duration = sound.getnframes() / sound.getframerate()
     info_dict = {
         # 1 is mono 2 is stereo
         "num_channels": sound.getnchannels(),
@@ -24,9 +28,10 @@ def get_info(filename: str) -> dict:
 
 def main():
     # filename = "Bird Call.wav"
-    filename = "Whistling_tones.wav"
+    # filename = "Whistling_tones.wav"
     # filename = "high_low_screaming.wav"
-    filename = "Frog Resonance.wav"
+    filename = "Clap sounds.wav"
+    # filename = "Frog Resonance.wav"
     info_dict = get_info(filename)
     # NOTES: Geophysical time is real time Tg (22 secs)
     # Arrival time
@@ -43,8 +48,15 @@ def main():
     plot.subplot(211)  # tall enough for 2, wide enough for 1, plot #1
     plot.title("Spectrogram of " + filename.replace(".wav", ""))
     plot.plot(signal_data)
+    # TODO: figure out how to zoom in and out of all graphs
+    # using linspace an xticks to scale the axis to the time domain
+    # plot.xticks(np.linspace())
     plot.xlabel('Sample')
     plot.ylabel('Amplitude')
+    print(info_dict["total_signals"])
+    print(info_dict["sampling_freq"])
+    print(info_dict["duration"])
+    print(signal_data)
 
     plot.subplot(212)  # tall enough for 2, wide enough for 1, plot #2
     spectrogram = plot.specgram(signal_data, Fs=sampling_frequency)
@@ -78,8 +90,6 @@ def main():
     # fourier coefficients are the coeffecients a,b,c in a*sin() + b*cos()
     # you can go between time and frequency domains with the fourier transform
 
-    # TODO: Have a legend that says the amplitude of the signal. Yellow is loudest, green is lowest. (in decibels)
-    # ^ is gonna need more time, is it actually important though
     # More than one frequency is a broadband signal while a single frequency is just one signal
 
     # TODO: learn about fourier transforms
@@ -99,6 +109,9 @@ def main():
 
     # TODO: make a clap signal and look at it in the fourier transform graph, not the spectrogram graph
     # TODO: find what is power spectral density with the fourier transform
+
+    # The power spectral density (PSD) of the signal describes the power present in the signal as a function of
+    # frequency, per unit frequency. Power spectral density is commonly expressed in watts per hertz (W/Hz).
 
     # Taking out the motorcycle sound
     # TODO: make vector with length equal to total number of signals
@@ -125,6 +138,9 @@ def main():
     # Every object has multiple resonance frequencies called modes
     # 3 standing waves mean its at the mode 3 frequency
     # Helmholtz resonator whirrs when you blow into the opening from a certain angle
+
+    # 3 mediums in sound
+    # source (generator), medium (propagation), receiver
 
 
 if __name__ == '__main__':
