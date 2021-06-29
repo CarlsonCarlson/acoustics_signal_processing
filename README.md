@@ -11,3 +11,4 @@ This is because I've installed multiple packages and if you don't want those ins
    1. "pip install -r requirements.txt"
    2. make sure you are in the main directory of this repository so your terminal can access the requirements.txt file in this repo.
    
+When you're done playing around with the repo, you can just delete the virtual environment to get rid of the packages you installed to run this repo's contents. just look up "delete [your virtual environment manager name] environment" on google and follow those instructions
